@@ -1,11 +1,11 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { CajaComponent } from './pages/recepcionista/caja/caja.component';
-import { InicioComponent } from './pages/admin/inicio/inicio.component';
+import { InicioComponent } from './pages/general/inicio/inicio.component';
 import { listReservaComponent } from './pages/recepcionista/listReserva/listReserva.component';
-import { PerfilComponent } from './pages/admin/perfil/perfil.component';
+import { PerfilComponent } from './pages/general/perfil/perfil.component';
 import { ReservasComponent } from './pages/recepcionista/reservas/reservas.component';
-import { LoginComponent } from './pages/login/login.component';
+import { LoginComponent } from './pages/general/login/login.component';
 
 const routes: Routes = [
   {

@@ -1,0 +1,15 @@
+
+.start__welcome{
+  margin-bottom: 3rem;
+}
+
+.start__title {
+  font-family: var(--third_font);
+  font-weight: bold;
+  font-size: 2rem;
+}
+
+.font__start__item {
+  font-family: var(--default_font);
+  font-size: 1rem;
+}

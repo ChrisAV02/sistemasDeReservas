@@ -1,0 +1,13 @@
+
+.font__title {
+  font-size: 2rem;
+  font-family: var(--third_font);
+  font-weight: bold;
+}
+
+.font__bar__item {
+  font-size: 1rem;
+  font-family: var(--secondary_font);
+  /* font-weight: bold; */
+}
+

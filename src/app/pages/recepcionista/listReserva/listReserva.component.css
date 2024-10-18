@@ -1,0 +1,6 @@
+
+.list__title {
+  font-family: var(--third_font);
+  font-weight: bold;
+  font-size: 2rem;
+}
