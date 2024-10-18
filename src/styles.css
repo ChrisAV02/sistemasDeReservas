@@ -7,7 +7,12 @@
   margin: 0;
   padding: 0;
   box-sizing: border-box;
-  font-family: sans-serif;
 }
 
+
+:root {
+  --default_font: 'Barlow', sans-serif;
+  --secondary_font: 'Barlow Condensed', sans-serif;
+  --third_font: 'Noto Serif Display', serif;
+}
 

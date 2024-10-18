@@ -1,0 +1,13 @@
+.main__content{
+  width: 100vw;
+  height: 100vh;
+}
+
+.secondary__content {
+  height: 100vh;
+}
+
+.view {
+  height: 90%;
+}
+
