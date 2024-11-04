@@ -1,1 +1,91 @@
-<p>caja works!</p>
+<h2>Proceso de pago</h2>
+<div class="w-full justify-center px-5 mt-3">
+  <div class="m-auto max-w-[500px] flex-col">
+    <div class="flex justify-center">
+      <input
+        class="mx-3 rounded-lg border border-black px-3 py-3 text-sm font-medium text-zinc-950 placeholder:text-zinc-950 focus:outline-0 dark:bg-transparent dark:text-black dark:placeholder:text-zinc-400"
+        placeholder="Ingrese el código de pago">
+      <button
+        class="px-3 py-1 shadow-lg shadow-gray-500/50 bg-black text-white rounded-lg text-[15px] cursor-pointer active:scale-[.97]">Buscar
+      </button>
+    </div>
+  </div>
+</div>
+
+<div class='items-center justify-center'>
+  <div class='w-full max-w-4xl px-8 py-6 m-auto rounded-lg shadow-md shadow-gray-600 mt-4 bg-white'>
+    <div class="w-full">
+      <form>
+        <h3 class="mb-2 text-xl text-black">Datos</h3>
+        <div class="grid grid-cols-3 gap-4 max-w-[750px] m-auto mb-3">
+          <div class="m-auto">
+            <label for="document" class="block text-sm font-medium text-gray-700">DNI</label>
+            <input type="text" id="document" name="document" class="mt-1 p-2 w-full border rounded-md">
+          </div>
+          <div class="m-auto">
+            <label for="firstName" class="block text-sm font-medium text-gray-700">Nombres</label>
+            <input type="text" id="firstName" name="firstName" class="mt-1 p-2 w-full border rounded-md">
+          </div>
+          <div class="m-auto">
+            <label for="lastName" class="block text-sm font-medium text-gray-700">Apellidos</label>
+            <input type="text" id="lastName" name="lastName" class="mt-1 p-2 w-full border rounded-md">
+          </div>
+        </div>
+
+        <div class="grid grid-cols-3 gap-4 max-w-[750px] m-auto mb-3">
+          <div class="m-auto">
+            <label for="tel" class="block text-sm font-medium text-gray-700">Telefono</label>
+            <input type="tel" id="tel" name="tel" class="mt-1 p-2 w-full border rounded-md">
+          </div>
+          <div class="m-auto">
+            <label for="lastName" class="block text-sm font-medium text-gray-700">Fecha de Inicio</label>
+            <input type="text" id="lastName" name="lastName" class="mt-1 p-2 w-full border rounded-md">
+          </div>
+          <div class="m-auto">
+            <label for="lastName" class="block text-sm font-medium text-gray-700">Fecha de Fin</label>
+            <input type="text" id="lastName" name="lastName" class="mt-1 p-2 w-full border rounded-md">
+          </div>
+        </div>
+
+        <div class="grid grid-cols-4 gap-4 max-w-[750px] m-auto mb-3">
+          <div class="m-auto">
+            <label for="pago" class="block text-sm font-medium text-gray-700">Pago adelantado</label>
+            <select id="pago" name="pago" class="mt-1 p-2 w-full border rounded-md">
+              <option value="completo">Completo</option>
+              <option value="mitad">Mitad</option>
+            </select>
+          </div>
+          <div class="m-auto">
+            <label for="lastName" class="block text-sm font-medium text-gray-700">Monto</label>
+            <input type="text" id="lastName" name="lastName" class="mt-1 p-2 w-full border rounded-md">
+          </div>
+          <div class="m-auto">
+            <label for="lastName" class="block text-sm font-medium text-gray-700">Monto Recibido</label>
+            <input type="text" id="lastName" name="lastName" class="mt-1 p-2 w-full border rounded-md">
+          </div>
+          <div class="m-auto">
+            <label for="lastName" class="block text-sm font-medium text-gray-700">Vuelto</label>
+            <input type="text" id="lastName" name="lastName" class="mt-1 p-2 w-full border rounded-md">
+          </div>
+        </div>
+
+        <div class="grid grid-cols-2 gap-4 max-w-[750px] m-auto mb-3">
+          <button
+          class="w-full text-sm flex items-center justify-center bg-slate-800 rounded hover:bg-slate-700 text-white py-3 px-6 mt-4">Pagar</button>
+          <button
+          class="w-full text-sm flex items-center justify-center bg-slate-800 rounded hover:bg-slate-700 text-white py-3 px-6 mt-4">Cancelar</button>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>
+
+<div class="w-full justify-center px-5 mt-3">
+  <div class="m-auto max-w-[500px] flex-col">
+    <div class="flex justify-center">
+      <button
+        class="px-3 py-3 shadow-lg shadow-gray-500/50 bg-black text-white rounded-lg text-[15px] cursor-pointer active:scale-[.97]">Ver Registro de Pagos
+      </button>
+    </div>
+  </div>
+</div>

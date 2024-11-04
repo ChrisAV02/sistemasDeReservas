@@ -1,10 +1,9 @@
-import { Habitacion } from "./habitacion.interface";
-
 
 export interface tipoHabitacion {
-  tipoHabitacion: String;
+  idTipo?: number;
+
+  tipo: String;
   caracteristicas: String;
-  precio: Number;
-  habitacion: Habitacion;
+  precio: number;
 }
 

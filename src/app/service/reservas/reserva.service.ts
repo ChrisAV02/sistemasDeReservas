@@ -11,6 +11,7 @@ export class ReservaService {
 
   private apiUrl = 'http://localhost:8080/api/reserva';
 
+  //DECLARANDO METODOS EN EL CONSTRUCTOR
   constructor(private http: HttpClient) {}
 
   // CREAR RESERVA
@@ -33,9 +34,8 @@ export class ReservaService {
     return this.http.get<Reserva[]>(`${this.apiUrl}/listaReservas`);
   }
 
-    // // Buscar reserva por ID
-  // getReservaById(id: number): Observable<Reserva> {
-  //   return this.http.get<Reserva>(`${this.apiUrl}/buscar/${id}`);
-  // }
-
+  // Buscar reserva por ID
+  getReservaById(id: number): Observable<Reserva> {
+    return this.http.get<Reserva>(`${this.apiUrl}/buscar/${id}`);
+  }
 }

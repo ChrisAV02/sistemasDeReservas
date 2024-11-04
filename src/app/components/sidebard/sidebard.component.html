@@ -8,7 +8,7 @@
   </div>
   <div class="m-4">
     <ul class="mb-4 flex flex-col gap-3">
-      <li>
+      <li *ngIf="hasRole('ADMIN') || hasRole('RECEPCIONISTA')">
         <a [routerLink]="['inicio']">
           <button
             routerLinkActive="bg-gradient-to-tr from-blue-600 to-blue-400 shadow-md shadow-blue-500/20 hover:shadow-lg hover:shadow-blue-500/40 active:opacity-[0.85]"
@@ -28,7 +28,7 @@
           </button>
         </a>
       </li>
-      <li>
+      <li *ngIf="hasRole('RECEPCIONISTA')">
         <a [routerLink]="['reservas']">
           <button
             routerLinkActive="bg-gradient-to-tr from-blue-600 to-blue-400 shadow-md shadow-blue-500/20 hover:shadow-lg hover:shadow-blue-500/40 active:opacity-[0.85]"
@@ -44,7 +44,7 @@
           </button>
         </a>
       </li>
-      <li>
+      <li *ngIf="hasRole('RECEPCIONISTA')">
         <a [routerLink]="['caja']">
           <button
             routerLinkActive="bg-gradient-to-tr from-blue-600 to-blue-400 shadow-md shadow-blue-500/20 hover:shadow-lg hover:shadow-blue-500/40 active:opacity-[0.85]"
@@ -62,7 +62,7 @@
           </button>
         </a>
       </li>
-      <li>
+      <li *ngIf="hasRole('RECEPCIONISTA')">
         <a [routerLink]="['lista-de-reservas']">
           <button
             routerLinkActive="bg-gradient-to-tr from-blue-600 to-blue-400 shadow-md shadow-blue-500/20 hover:shadow-lg hover:shadow-blue-500/40 active:opacity-[0.85]"
@@ -81,7 +81,7 @@
           </button>
         </a>
       </li>
-      <li>
+      <li *ngIf="hasRole('RECEPCIONISTA') || hasRole('ADMIN')">
         <a [routerLink]="['perfil']">
           <button
             routerLinkActive="bg-gradient-to-tr from-blue-600 to-blue-400 shadow-md shadow-blue-500/20 hover:shadow-lg hover:shadow-blue-500/40 active:opacity-[0.85]"
@@ -94,6 +94,18 @@
                 clip-rule="evenodd"></path>
             </svg>
             <p class="block antialiased text-base leading-relaxed text-inherit font-medium capitalize font__bar__item">Perfil
+            </p>
+          </button>
+        </a>
+      </li>
+      <li>
+        <a>
+          <button
+          (click)="logout()"
+            routerLinkActive="bg-gradient-to-tr from-blue-600 to-blue-400 shadow-md shadow-blue-500/20 hover:shadow-lg hover:shadow-blue-500/40 active:opacity-[0.85]"
+            class="bg-red-600 middle none font-bold center transition-all disabled:opacity-50 disabled:shadow-none disabled:pointer-events-none text-xs py-3 rounded-lg text-white hover:bg-red-800 active:bg-white/30 w-full flex items-center gap-4 px-4 capitalize"
+            type="button">
+            <p class="block antialiased text-base leading-relaxed text-inherit font-medium capitalize font__bar__item">Salir
             </p>
           </button>
         </a>

@@ -1,8 +1,7 @@
-import { Caja } from "./caja.interface";
-
 
 export interface metodoPago {
+  idMetodo?: number;
+
   metodo: String;
-  cajas: Caja;
 }
 

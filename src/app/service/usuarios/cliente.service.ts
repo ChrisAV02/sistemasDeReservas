@@ -37,4 +37,9 @@ export class ClienteService {
     return this.http.get<Cliente>(`${this.apiUrl}/buscar/${id}`);
   }
 
+  // BUSCAR CLIENTE POR SU DNI
+  getClienteByDni(dni: String): Observable<Cliente> {
+    return this.http.get<Cliente>(`${this.apiUrl}/buscar/dni/${dni}`);
+  }
+
 }

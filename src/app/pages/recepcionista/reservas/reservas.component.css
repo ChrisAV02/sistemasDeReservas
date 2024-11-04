@@ -1,0 +1,17 @@
+
+.ghost_text{
+  color: #666666;
+  pointer-events: none;
+  user-select: none;
+}
+
+
+.ghost {
+  background-color: #CCCCCC;
+  border: 1px solid #666666;
+  color: #666666;
+  pointer-events: none;
+  user-select: none;
+}
+
+

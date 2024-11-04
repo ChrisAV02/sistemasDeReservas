@@ -3,7 +3,6 @@ import { Component } from '@angular/core';
 import { RouterOutlet } from '@angular/router';
 
 import { HeaderComponent } from '../header/header.component';
-import { FooterComponent } from '../footer/footer.component';
 import { SidebardComponent } from '../sidebard/sidebard.component';
 
 @Component({
@@ -11,7 +10,6 @@ import { SidebardComponent } from '../sidebard/sidebard.component';
   standalone: true,
   imports:[
     HeaderComponent,
-    FooterComponent,
     SidebardComponent,
     RouterOutlet
   ],

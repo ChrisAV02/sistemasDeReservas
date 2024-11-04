@@ -14,5 +14,16 @@
   --default_font: 'Barlow', sans-serif;
   --secondary_font: 'Barlow Condensed', sans-serif;
   --third_font: 'Noto Serif Display', serif;
+  --background-bg: #fff;
+  --text-color: #000;
 }
 
+.dark-theme {
+  --background-bg: rgba(0, 0, 0, 0.8);
+  --text-color: #e0e0e0;
+}
+
+body {
+  background: var(--background-bg);
+  color: var(--text-color);
+}

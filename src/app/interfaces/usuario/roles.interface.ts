@@ -1,8 +1,7 @@
-import { Empleado } from "./empleado.interface";
-
 
 export interface Roles {
+  idRol?: number;
+
   nombreRol: String;
-  empleado: Empleado;
 }
 

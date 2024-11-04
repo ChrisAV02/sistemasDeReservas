@@ -1,8 +1,6 @@
-import { Caja } from "./caja.interface";
-
 
 export interface estadoPago {
+  idEstado?: number;
   estado: String;
-  cajas: Caja;
 }
 

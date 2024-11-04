@@ -1,14 +1,14 @@
 
 <section id="principal">
   <div class="wrapper">
-    <form action="#">
+    <form [formGroup]="loginForm" (ngSubmit)="onSubmit()">
       <h2>Iniciar Sesion</h2>
       <div class="input-field">
-        <input type="text" required>
+        <input type="text" required formControlName="usuario">
         <label for="">Usuario</label>
       </div>
       <div class="input-field">
-        <input type="password" required>
+        <input type="password" required formControlName="clave">
         <label for="">Contraseña</label>
       </div>
       <div class="forget">
@@ -17,7 +17,8 @@
           <p>¿Eres administrador?</p>
         </label>
       </div>
-      <button type="submit">Iniciar</button>
+      <button type="submit" type="submit" [disabled]="loginForm.invalid">Iniciar</button>
+      <div *ngIf="loginError" style="color: red;">{{ loginError }}</div>
     </form>
   </div>
 </section>

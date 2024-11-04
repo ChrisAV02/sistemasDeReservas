@@ -1,10 +1,12 @@
-import { Reserva } from "../reserva/reserva.interface";
 import { tipoHabitacion } from "./tipoHabitacion.interface";
 
 
 export interface Habitacion {
+  idHabitacion?: number;
+  idTipo?: number;
+
   estado: String;
-  nHabitacion: Number;
-  tipoHabitacion: tipoHabitacion;
-  reservas: Reserva;
+  nHabitacion: number;
+
+  tipoHabitacion?: tipoHabitacion;
 }
