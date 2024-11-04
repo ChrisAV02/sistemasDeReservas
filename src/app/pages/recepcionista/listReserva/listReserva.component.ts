@@ -10,10 +10,11 @@ import { Reserva } from '../../../interfaces/reserva/reserva.interface';
 export class listReservaComponent implements OnInit {
 
   public listReservas: Reserva[] = [];
+  private todasLasReservas: Reserva[] = [];
   public filtro: string = '';
 
   constructor(
-    public reservaService: ReservaService
+    private reservaService: ReservaService
   ) { }
 
   ngOnInit(): void {
@@ -24,7 +25,8 @@ export class listReservaComponent implements OnInit {
     this.reservaService.getReservas().subscribe(
       (reservas) => {
         this.listReservas = reservas;
-        console.log('Lista de reservas obtenida:', this.listReservas);
+        this.todasLasReservas = reservas;
+        // console.log('Lista de reservas obtenida:', this.listReservas);
       },
       (error) => {
         console.error('Error al obtener las reservas:', error);
@@ -32,12 +34,12 @@ export class listReservaComponent implements OnInit {
     );
   }
 
-  // Método para filtrar reservas por ID, DNI o nombre
   filtrarReservas(): void {
-    this.listReservas = this.listReservas.filter(listReservas =>
-      listReservas.cliente.nombres.includes(this.filtro) ||
-      listReservas.cliente.dni.toString().includes(this.filtro) ||
-      listReservas.idReserva?.toString().includes(this.filtro)
+    const filtroLowerCase = this.filtro.toLowerCase();
+    this.listReservas = this.todasLasReservas.filter(reserva =>
+      reserva.cliente?.nombres.toLowerCase().includes(filtroLowerCase) ||
+      reserva.cliente?.dni.toString().includes(filtroLowerCase) ||
+      reserva.idReserva?.toString().includes(filtroLowerCase)
     );
   }
 }

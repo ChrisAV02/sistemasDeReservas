@@ -1,13 +1,33 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { RouterLink, RouterLinkActive } from '@angular/router';
+import { AuthService } from '../../service/login/auth.service';
+import { Empleado } from '../../interfaces/usuario/empleado.interface';
+import { CommonModule } from '@angular/common';
 
 @Component({
   selector: 'app-components-sidebard',
   standalone: true,
-  imports:[RouterLink, RouterLinkActive],
+  imports:[RouterLink, RouterLinkActive, CommonModule],
   templateUrl: './sidebard.component.html',
   styleUrl: './sidebard.component.css'
 })
-export class SidebardComponent {
+export class SidebardComponent implements OnInit{
+
+  public empleado: Empleado | null = null;
+  public isAdminOrReceptionist: boolean = false;
+
+  constructor(public authService: AuthService) {}
+
+  ngOnInit(): void {
+    this.empleado = this.authService.getEmpleado();
+  }
+
+  logout(): void {
+    this.authService.logout();
+  }
+
+  hasRole(roleName: string): boolean {
+    return this.empleado?.rol.some(r => r.nombreRol === roleName) ?? false;
+  }
 
 }

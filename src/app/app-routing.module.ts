@@ -6,6 +6,7 @@ import { listReservaComponent } from './pages/recepcionista/listReserva/listRese
 import { PerfilComponent } from './pages/general/perfil/perfil.component';
 import { ReservasComponent } from './pages/recepcionista/reservas/reservas.component';
 import { LoginComponent } from './pages/general/login/login.component';
+import { AuthGuard } from './guard/auth.guard';
 
 const routes: Routes = [
   {
@@ -13,19 +14,20 @@ const routes: Routes = [
     loadComponent: () => import('./components/layout/layout.component'),
     children: [
       {
-        path: 'inicio', component: InicioComponent
+        // canActivate: [AuthGuard]
+        path: 'inicio', component: InicioComponent, canActivate: [AuthGuard], data: { roles: ['ADMIN', 'RECEPCIONISTA'] }
       },
       {
-        path: 'reservas', component: ReservasComponent
+        path: 'reservas', component: ReservasComponent, canActivate: [AuthGuard], data: { roles: ['RECEPCIONISTA'] }
       },
       {
-        path: 'caja', component: CajaComponent
+        path: 'caja', component: CajaComponent, canActivate: [AuthGuard], data: { roles: ['RECEPCIONISTA'] }
       },
       {
-        path: 'lista-de-reservas', component: listReservaComponent
+        path: 'lista-de-reservas', component: listReservaComponent, canActivate: [AuthGuard], data: { roles: ['RECEPCIONISTA'] }
       },
       {
-        path: 'perfil', component: PerfilComponent
+        path: 'perfil', component: PerfilComponent, canActivate: [AuthGuard], data: { roles: ['ADMIN', 'RECEPCIONISTA'] }
       },
       {
         path: '',

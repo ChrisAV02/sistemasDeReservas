@@ -1,8 +1,14 @@
-import { Reserva } from "../reserva/reserva.interface";
 import { Roles } from "./roles.interface";
 
-
 export interface Empleado {
+  idEmpleado?: number;
+  rol: [
+    {
+      idRol: number;
+      nombreRol: String;
+    }
+  ];
+
   dni: String;
   nombres: String;
   apellidos: String;
@@ -10,7 +16,6 @@ export interface Empleado {
   correoElectronico: String;
   usuario: String;
   clave: String;
-  roles: Roles;
-  reservas: Reserva;
-}
 
+  roles?: Roles;
+}

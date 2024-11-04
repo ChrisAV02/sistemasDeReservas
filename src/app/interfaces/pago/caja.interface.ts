@@ -5,12 +5,19 @@ import { metodoPago } from "./metodoPago.interface";
 
 
 export interface Caja {
-  nOperacion: Number;
+  idCaja?: number;
+  idEstado?: number;
+  idMetodo?: number;
+  idReserva?: number;
+  idCliente?: number;
+
+  nOperacion: number;
   fechaPago: Date;
-  montoPago: Number;
-  estadoPago: estadoPago;
-  metodoPago: metodoPago;
-  reserva: Reserva;
-  cliente: Cliente;
+  montoPago: number;
+
+  reserva?: Reserva;
+  cliente?: Cliente;
+  estadoPago?: estadoPago;
+  metodoPago?: metodoPago;
 }
 

@@ -28,7 +28,7 @@ export class HabitacionService {
   }
 
   // LISTAR HABITACIONES
-  getHabitacion(): Observable<Habitacion[]> {
+  getListaHabitaciones(): Observable<Habitacion[]> {
     return this.http.get<Habitacion[]>(`${this.apiUrl}/listaHabitaciones`);
   }
 }

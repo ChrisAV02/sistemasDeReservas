@@ -2,7 +2,7 @@
   <h2 class="list__title">Lista de Reservas</h2>
 
   <div class="mb-6 flex justify-end">
-    <input type="text" (input)="filtro" (input)="filtrarReservas()" placeholder="Buscar reservas..."
+    <input type="text" [(ngModel)]="filtro" (input)="filtrarReservas()" placeholder="Buscar reservas..."
       class="w-1/3 p-2 border border-gray-300 rounded-md focus:ring-2 focus:ring-indigo-500 focus:outline-none">
   </div>
 
@@ -23,12 +23,13 @@
         </thead>
         <tbody class="divide-y divide-gray-200">
           <tr *ngFor="let reserva of listReservas">
+            <!-- Interpolación -->
             <td class="px-4 py-5 whitespace-nowrap">{{reserva.idReserva}}</td>
-            <td class="px-4 py-5 whitespace-nowrap">{{reserva.cliente.nombres}}</td>
-            <td class="px-4 py-5 whitespace-nowrap">{{reserva.cliente.apellidos}}</td>
-            <td class="px-4 py-5 whitespace-nowrap">{{reserva.cliente.dni}}</td>
+            <td class="px-4 py-5 whitespace-nowrap">{{reserva.cliente?.nombres}}</td>
+            <td class="px-4 py-5 whitespace-nowrap">{{reserva.cliente?.apellidos}}</td>
+            <td class="px-4 py-5 whitespace-nowrap">{{reserva.cliente?.dni}}</td>
             <td class="px-4 py-5 whitespace-nowrap">{{reserva.caja?.estadoPago}}</td>
-            <td class="px-4 py-5 whitespace-nowrap">{{reserva.habitacion.nHabitacion}}</td>
+            <td class="px-4 py-5 whitespace-nowrap">{{reserva.habitacion?.nHabitacion}}</td>
             <td class="px-4 py-5 whitespace-nowrap">{{reserva.fechaRegistro}}</td>
             <td class="px-4 py-5 whitespace-nowrap">
               <a href="#" class="text-indigo-600 hover:text-indigo-900">Editar</a>
