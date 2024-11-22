@@ -28,7 +28,17 @@ export class EmpleadoService {
   }
 
   // LISTAR EMPLEADO
-  getEmpleado(): Observable<Empleado[]> {
+  getListEmpleados(): Observable<Empleado[]> {
     return this.http.get<Empleado[]>(`${this.apiUrl}/listaEmpleado`);
+  }
+
+  // OBTENER EMPLEADO POR ID
+  getEmpleadoId(id: number): Observable<Empleado> {
+    return this.http.get<Empleado>(`${this.apiUrl}/buscar/${id}`);
+  }
+
+  // OBTENER EMPLEADO POR DNI
+  getEmpleadoDni(dni: string): Observable<Empleado> {
+    return this.http.get<Empleado>(`${this.apiUrl}/buscarPorDni/${dni}`);
   }
 }

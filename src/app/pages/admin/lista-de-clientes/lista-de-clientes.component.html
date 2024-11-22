@@ -1,5 +1,5 @@
 <section class="p-6 rounded-lg shadow-md shadow-gray-600 h-[550px]">
-  <h2 class="list__title">Gestión Habitaciones</h2>
+  <h2 class="list__title">Lista de Clientes</h2>
 
   <!-- <div class="mb-6 flex justify-end">
     <input type="text" [(ngModel)]="filtro" (input)="filtrarReservas()" placeholder="Buscar reservas..."
@@ -22,9 +22,9 @@
           </tr>
         </thead>
         <tbody class="divide-y divide-gray-200">
-          <!-- <tr *ngFor="let reserva of listReservas"> -->
+          <tr *ngFor="let reserva">
             <!-- Interpolación -->
-            <!-- <td class="px-4 py-5 whitespace-nowrap">{{reserva.idReserva}}</td>
+            <td class="px-4 py-5 whitespace-nowrap">{{reserva.idReserva}}</td>
             <td class="px-4 py-5 whitespace-nowrap">{{reserva.cliente?.nombres}}</td>
             <td class="px-4 py-5 whitespace-nowrap">{{reserva.cliente?.apellidos}}</td>
             <td class="px-4 py-5 whitespace-nowrap">{{reserva.cliente?.dni}}</td>
@@ -35,8 +35,8 @@
               <a href="#" class="text-indigo-600 hover:text-indigo-900">Editar</a>
               <span> / </span>
               <a href="#" class="text-indigo-600 hover:text-indigo-900">Cancelar</a>
-            </td> -->
-          <!-- </tr> -->
+            </td>
+          </tr>
         </tbody>
       </table>
     </div>

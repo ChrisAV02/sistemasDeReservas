@@ -13,7 +13,7 @@ export interface Reserva {
   fechaRegistro: Date;
   fechaInicio: Date;
   fechaFin: Date;
-  estado: String;
+  estado: string;
   precioFinal: number
   // RELACIONES A OTRAS TABLAS
   habitacion?: Habitacion;

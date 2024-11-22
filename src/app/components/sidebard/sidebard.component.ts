@@ -13,13 +13,12 @@ import { CommonModule } from '@angular/common';
 })
 export class SidebardComponent implements OnInit{
 
-  public empleado: Empleado | null = null;
-  public isAdminOrReceptionist: boolean = false;
+  private empleado: Empleado | null = null;
 
   constructor(public authService: AuthService) {}
 
   ngOnInit(): void {
-    this.empleado = this.authService.getEmpleado();
+    this.empleado = this.authService.getAuthEmpleado();
   }
 
   logout(): void {
@@ -27,7 +26,11 @@ export class SidebardComponent implements OnInit{
   }
 
   hasRole(roleName: string): boolean {
-    return this.empleado?.rol.some(r => r.nombreRol === roleName) ?? false;
+    const nombreRol: string[] = this.getUserRoles();
+    return nombreRol.includes(roleName);
   }
 
+  getUserRoles(): string[] {
+    return this.empleado?.rol?.map(role => role.nombreRol).filter((nombreRol): nombreRol is string => !!nombreRol) || [];
+  }
 }

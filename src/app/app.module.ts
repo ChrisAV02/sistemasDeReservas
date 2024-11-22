@@ -7,10 +7,11 @@ import { AppComponent } from './app.component';
 import { HttpClientModule} from '@angular/common/http';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { PagesModule } from './pages/pages.module';
+import { SharedModule } from './components/shared/shared.module';
 
 @NgModule({
   declarations: [
-    AppComponent,
+    AppComponent
   ],
   imports: [
     BrowserModule,
@@ -18,7 +19,9 @@ import { PagesModule } from './pages/pages.module';
     ReactiveFormsModule,
     FormsModule,
     HttpClientModule,
-    PagesModule
+    PagesModule,
+  ],
+  exports: [
   ],
   providers: [],
   bootstrap: [AppComponent]

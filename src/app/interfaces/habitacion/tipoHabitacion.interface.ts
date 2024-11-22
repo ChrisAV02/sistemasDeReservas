@@ -2,8 +2,8 @@
 export interface tipoHabitacion {
   idTipo?: number;
 
-  tipo: String;
-  caracteristicas: String;
+  tipo: string;
+  caracteristicas: string;
   precio: number;
 }
 

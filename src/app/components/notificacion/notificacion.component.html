@@ -1,0 +1,17 @@
+<!-- ADVERTENCIA SI ES ERRONEO EL DNI -->
+<div *ngIf="show && type === 'warning'" class="fixed top-0 right-0 m-4 p-4 z-50 w-auto alert alert-warning flex items-center gap-4" role="alert">
+  <span class="icon-[tabler--alert-triangle] size-6"></span>
+  <p><span class="text-lg font-semibold">{{ message }}</span></p>
+</div>
+
+<!-- SALE CUANDO EL DNI ES CORRECTO -->
+<div *ngIf="show && type === 'success'" class="fixed top-0 right-0 m-4 p-4 z-50 w-auto alert alert-success flex items-center gap-4" role="alert">
+  <span class="icon-[tabler--circle-check] size-6"></span>
+  <p><span class="text-lg font-semibold">{{ message }}</span></p>
+</div>
+
+<!-- MENSAJE EN CASO QUE DE ERROR -->
+<div *ngIf="show && type === 'error'" class="fixed top-0 right-0 m-4 p-4 z-50 w-auto alert alert-warning flex items-center gap-4 bg-red-600" role="alert">
+  <span class="icon-[tabler--info-circle] size-6"></span>
+  <p><span class="text-lg font-bold">{{ message }}</span></p>
+</div>

@@ -2,20 +2,20 @@ import { Roles } from "./roles.interface";
 
 export interface Empleado {
   idEmpleado?: number;
-  rol: [
+  rol?: [
     {
-      idRol: number;
-      nombreRol: String;
+      idRol?: number;
+      nombreRol?: string;
     }
   ];
 
-  dni: String;
-  nombres: String;
-  apellidos: String;
-  direccion: String;
-  correoElectronico: String;
-  usuario: String;
-  clave: String;
+  dni: string;
+  nombres: string;
+  apellidos: string;
+  direccion: string;
+  correoElectronico: string;
+  usuario: string;
+  clave?: string;
 
   roles?: Roles;
 }

@@ -16,7 +16,7 @@ export class ReservasComponent implements OnInit {
 
   public freeRoom: Habitacion[] = [];
   public clienteEncontrado: Cliente | null = null;
-  public dniCliente: String = '';
+  public dniCliente: string = '';
   public reservaForm: FormGroup;
   public idEmpleado: number = 1;
 

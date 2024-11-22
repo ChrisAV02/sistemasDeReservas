@@ -2,6 +2,6 @@
 export interface Roles {
   idRol?: number;
 
-  nombreRol: String;
+  nombreRol: string;
 }
 
