@@ -1,4 +1,5 @@
 import { Component, Renderer2 } from '@angular/core';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-components-header',
@@ -7,7 +8,16 @@ import { Component, Renderer2 } from '@angular/core';
   styleUrl: './header.component.css'
 })
 export class HeaderComponent {
-  constructor(private renderer: Renderer2) {}
+
+  public rol: string = 'a';
+  public pageName: string = 'b';
+
+  constructor(private renderer: Renderer2, private router: Router) {
+    this.rol = "hola";
+    this.router.events.subscribe(() => {
+      this.pageName = this.getPageName();
+    });
+  }
 
   darkMode(event: any) {
     if (event.target.checked) {
@@ -16,4 +26,16 @@ export class HeaderComponent {
       this.renderer.removeClass(document.body, 'dark-theme');
     }
   }
+
+  getUserRole(): string {
+    const authEmpleado = localStorage.getItem('authEmpleado');
+    const empleado = authEmpleado ? JSON.parse(authEmpleado) : null;
+    return empleado?.rol || ''; // Suponiendo que `rol` contiene el nombre del rol.
+  }
+
+  getPageName(): string {
+    const url = this.router.url;
+    return url.split('/').pop() || 'Inicio';
+  }
+
 }

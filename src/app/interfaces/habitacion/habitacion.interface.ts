@@ -5,7 +5,7 @@ export interface Habitacion {
   idHabitacion?: number;
   idTipo?: number;
 
-  estado: String;
+  estado: string;
   nHabitacion: number;
 
   tipoHabitacion?: tipoHabitacion;

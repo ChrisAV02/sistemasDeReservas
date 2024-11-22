@@ -1,4 +1,3 @@
-
 <section id="principal">
   <div class="wrapper">
     <form [formGroup]="loginForm" (ngSubmit)="onSubmit()">
@@ -11,17 +10,8 @@
         <input type="password" required formControlName="clave">
         <label for="">Contraseña</label>
       </div>
-      <div class="forget">
-        <label for="remember">
-          <input type="checkbox" id="remember">
-          <p>¿Eres administrador?</p>
-        </label>
-      </div>
-      <button type="submit" type="submit" [disabled]="loginForm.invalid">Iniciar</button>
+      <button type="submit" [disabled]="loginForm.invalid">Iniciar</button>
       <div *ngIf="loginError" style="color: red;">{{ loginError }}</div>
     </form>
   </div>
 </section>
-
-
-

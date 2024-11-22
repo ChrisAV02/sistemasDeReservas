@@ -19,11 +19,19 @@
 }
 
 .dark-theme {
-  --background-bg: rgba(0, 0, 0, 0.8);
-  --text-color: #e0e0e0;
+  --background-bg: #111928;
+  --text-color: #fff;
 }
 
 body {
   background: var(--background-bg);
   color: var(--text-color);
 }
+
+.list__title {
+  font-family: var(--third_font);
+  font-weight: bold;
+  font-size: 2rem;
+  margin-bottom: 1rem;
+}
+

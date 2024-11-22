@@ -28,7 +28,7 @@ export class RolesService {
   }
 
   // LISTAR ROLES
-  getRoles(): Observable<Roles[]> {
+  getListRoles(): Observable<Roles[]> {
     return this.http.get<Roles[]>(`${this.apiUrl}/listaRoles`);
   }
 }

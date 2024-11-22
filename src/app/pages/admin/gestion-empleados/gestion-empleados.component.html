@@ -1,0 +1,251 @@
+<section class="p-6 rounded-lg shadow-md shadow-gray-600 h-[550px] relative">
+  <h2 class="list__title">Gestión Empleados</h2>
+
+  <div class="mb-6 flex justify-between">
+    <input type="text" [(ngModel)]="filtro" (input)="filtrarEmpleados()" placeholder="Buscar reservas..."
+      class="w-1/3 p-2 border border-gray-300 rounded-md focus:ring-2 focus:ring-indigo-500 focus:outline-none">
+    <button class="btn btn-gradient btn-secondary" (click)="abrirModal()"> Crear nuevo Empleado </button>
+  </div>
+
+  <!-- Modal -->
+  <div *ngIf="mostrarModal" class="fixed z-40 inset-0 overflow-y-auto">
+    <div class="flex items-end justify-center min-h-screen pt-4 px-4 pb-20 text-center sm:block sm:p-0">
+      <div class="fixed inset-0 transition-opacity" aria-hidden="true">
+        <div class="absolute inset-0 bg-[#111928CC] opacity-80"></div>
+      </div>
+      <span class="hidden sm:inline-block sm:align-middle sm:h-screen" aria-hidden="true">&#8203;</span>
+      <div
+        class="tarjeta inline-block align-bottom bg-white rounded-lg text-left overflow-hidden shadow-xl transform transition-all sm:my-8 sm:align-middle sm:max-w-lg sm:w-full tarjeta">
+        <div class="bg-white px-4 pt-5 pb-4 sm:p-6 sm:pb-4">
+          <div class="sm:flex sm:items-start">
+            <div class="mt-3 text-center sm:mt-0 sm:ml-4 sm:text-left w-full h-full">
+              <h3 class="text-2xl leading-6 font-bold text-gray-900 text-center" id="modal-title">
+                Crear nuevo Empleado
+              </h3>
+              <div class="mt-10">
+                <form [formGroup]="empleadoForm" (ngSubmit)="guardarEmpleado()">
+                  <div class="mb-4 grid grid-cols-2 gap-4">
+                    <div>
+                      <label class="block text-gray-700 text-sm font-bold mb-2" for="dni">
+                        DNI
+                      </label>
+                      <input
+                        class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+                        id="dni" type="text" formControlName="dni">
+                    </div>
+                    <div class="relative">
+                      <button type="button" class="btn btn-gradient btn-primary absolute bottom-0"
+                        (click)="buscarEmpleadoPorDni()"> Buscar </button>
+                    </div>
+                  </div>
+                  <div class="mb-4 grid grid-cols-2 gap-4">
+                    <div>
+                      <label class="block text-gray-700 text-sm font-bold mb-2" for="nombre">
+                        Nombre
+                      </label>
+                      <input
+                        class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+                        id="nombre" type="text" formControlName="nombres">
+                    </div>
+                    <div>
+                      <label class="block text-gray-700 text-sm font-bold mb-2" for="apellido">
+                        Apellido
+                      </label>
+                      <input
+                        class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+                        id="apellido" type="text" formControlName="apellidos">
+                    </div>
+                  </div>
+                  <div class="mb-4">
+                    <label class="block text-gray-700 text-sm font-bold mb-2" for="direccion">
+                      Dirección
+                    </label>
+                    <input
+                      class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+                      id="direccion" type="text" formControlName="direccion">
+                  </div>
+                  <div class="mb-4">
+                    <label class="block text-gray-700 text-sm font-bold mb-2" for="correoElectronico">
+                      Correo Electrónico
+                    </label>
+                    <input
+                      class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+                      id="correoElectronico" type="email" formControlName="correoElectronico">
+                  </div>
+                  <div class="mb-4">
+                    <label class="block text-gray-700 text-sm font-bold mb-2" for="rol">
+                      Rol
+                    </label>
+                    <select
+                      class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline bg-transparent"
+                      id="rol" formControlName="rol">
+                      <option *ngFor="let rol of roles" [value]="rol.idRol">{{ rol.nombreRol }}</option>
+                    </select>
+                  </div>
+                  <div class="mb-4">
+                    <label class="block text-gray-700 text-sm font-bold mb-2" for="clave">
+                      Clave
+                    </label>
+                    <input
+                      class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+                      id="clave" type="password" formControlName="clave">
+                  </div>
+                  <div class="flex items-center justify-between">
+                    <button
+                      class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline"
+                      type="submit">
+                      Guardar
+                    </button>
+                    <button
+                      class="bg-red-500 hover:bg-red-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline"
+                      type="button" (click)="cerrarModal()">
+                      Cancelar
+                    </button>
+                  </div>
+                </form>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Modal para editar empleado -->
+  <div *ngIf="mostrarModalEdit" class="fixed z-40 inset-0 overflow-y-auto">
+    <div class="flex items-end justify-center min-h-screen pt-4 px-4 pb-20 text-center sm:block sm:p-0">
+      <div class="fixed inset-0 transition-opacity" aria-hidden="true">
+        <div class="absolute inset-0 bg-[#111928CC] opacity-80"></div>
+      </div>
+      <span class="hidden sm:inline-block sm:align-middle sm:h-screen" aria-hidden="true">&#8203;</span>
+      <div
+        class="tarjeta inline-block align-bottom bg-white rounded-lg text-left overflow-hidden shadow-xl transform transition-all sm:my-8 sm:align-middle sm:max-w-lg sm:w-full tarjeta">
+        <div class="bg-white px-4 pt-5 pb-4 sm:p-6 sm:pb-4">
+          <div class="sm:flex sm:items-start">
+            <div class="mt-3 text-center sm:mt-0 sm:ml-4 sm:text-left w-full h-full">
+              <h3 class="text-2xl leading-6 font-bold text-gray-900 text-center" id="modal-title">
+                Editar Empleado
+              </h3>
+              <div class="mt-10">
+                <form [formGroup]="empleadoEditForm" (ngSubmit)="actualizarEmpleado()">
+                  <div class="mb-4 grid grid-cols-2 gap-4">
+                    <div>
+                      <label class="block text-gray-700 text-sm font-bold mb-2" for="nombre">
+                        Nombre
+                      </label>
+                      <input
+                        class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+                        id="nombre" type="text" formControlName="nombres">
+                    </div>
+                    <div>
+                      <label class="block text-gray-700 text-sm font-bold mb-2" for="apellido">
+                        Apellido
+                      </label>
+                      <input
+                        class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+                        id="apellido" type="text" formControlName="apellidos">
+                    </div>
+                  </div>
+                  <div class="mb-4">
+                    <label class="block text-gray-700 text-sm font-bold mb-2" for="direccion">
+                      Dirección
+                    </label>
+                    <input
+                      class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+                      id="direccion" type="text" formControlName="direccion">
+                  </div>
+                  <div class="mb-4">
+                    <label class="block text-gray-700 text-sm font-bold mb-2" for="correoElectronico">
+                      Correo Electrónico
+                    </label>
+                    <input
+                      class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+                      id="correoElectronico" type="email" formControlName="correoElectronico">
+                  </div>
+                  <div class="mb-4">
+                    <label class="block text-gray-700 text-sm font-bold mb-2" for="rol">
+                      Rol
+                    </label>
+                    <select
+                      class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline bg-transparent"
+                      id="rol" formControlName="rol">
+                      <option *ngFor="let rol of roles" [value]="rol.idRol">{{ rol.nombreRol }}</option>
+                    </select>
+                  </div>
+                  <div class="flex items-center justify-between">
+                    <button
+                      class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline"
+                      type="submit">
+                      Actualizar
+                    </button>
+                    <button
+                      class="bg-red-500 hover:bg-red-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline"
+                      type="button" (click)="cerrarModalEdit()">
+                      Cancelar
+                    </button>
+                  </div>
+                </form>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="overflow-x-auto">
+    <div class="overflow-y-auto h-[350px] border border-gray-300 rounded-lg">
+      <table class="min-w-full">
+        <thead class="bg-gray-200 sticky top-0 z-10">
+          <tr>
+            <th class="px-4 py-4 text-left text-xs font-bold text-gray-700 uppercase tracking-wider">id</th>
+            <th class="px-4 py-4 text-left text-xs font-bold text-gray-700 uppercase tracking-wider">Nombre</th>
+            <th class="px-4 py-4 text-left text-xs font-bold text-gray-700 uppercase tracking-wider">Apellido</th>
+            <th class="px-4 py-4 text-left text-xs font-bold text-gray-700 uppercase tracking-wider">DNi</th>
+            <th class="px-4 py-4 text-left text-xs font-bold text-gray-700 uppercase tracking-wider">Dirección</th>
+            <th class="px-4 py-4 text-left text-xs font-bold text-gray-700 uppercase tracking-wider">Rol</th>
+            <th class="px-4 py-4 text-left text-xs font-bold text-gray-700 uppercase tracking-wider">Correo Electrónico
+            </th>
+            <th class="px-4 py-4 text-left text-xs font-bold text-gray-700 uppercase tracking-wider">Acciones</th>
+          </tr>
+        </thead>
+        <tbody class="divide-y divide-gray-200">
+          <tr *ngFor="let empleado of listEmpleados">
+            <!-- Interpolación -->
+            <td class="px-4 py-5 whitespace-nowrap">{{empleado.idEmpleado}}</td>
+            <td class="px-4 py-5 whitespace-nowrap">{{empleado.nombres}}</td>
+            <td class="px-4 py-5 whitespace-nowrap">{{empleado.apellidos}}</td>
+            <td class="px-4 py-5 whitespace-nowrap">{{empleado.dni}}</td>
+            <td class="px-4 py-5 whitespace-nowrap">{{empleado.direccion}}</td>
+            <td class="px-4 py-5 whitespace-nowrap">
+              <ul *ngFor="let rol of empleado.rol">
+                <li>{{ rol.nombreRol }}</li>
+              </ul>
+            </td>
+            <td class="px-4 py-5 whitespace-nowrap">{{empleado.correoElectronico}}</td>
+            <td class="px-4 py-5 whitespace-nowrap">
+              <script src="https://cdn.jsdelivr.net/npm/heroicons@1.0.6/dist/heroicons.min.js"></script>
+              <button type="button" (click)="abrirModalEdit(empleado)">
+                <svg xmlns="http://www.w3.org/2000/svg" x="0px" y="0px" width="30" height="30" viewBox="0 0 128 128">
+                  <path
+                    d="M 79.335938 15.667969 C 78.064453 15.622266 76.775 15.762109 75.5 16.099609 C 72.1 16.999609 69.299609 19.199219 67.599609 22.199219 L 64 28.699219 C 63.2 30.099219 63.699609 32.000781 65.099609 32.800781 L 82.400391 42.800781 C 82.900391 43.100781 83.400391 43.199219 83.900391 43.199219 C 84.200391 43.199219 84.399219 43.199609 84.699219 43.099609 C 85.499219 42.899609 86.1 42.399219 86.5 41.699219 L 90.199219 35.199219 C 91.899219 32.199219 92.4 28.700781 91.5 25.300781 C 90.6 21.900781 88.400391 19.100391 85.400391 17.400391 C 83.525391 16.337891 81.455078 15.744141 79.335938 15.667969 z M 60.097656 38.126953 C 59.128906 38.201172 58.199219 38.724609 57.699219 39.599609 L 27.5 92 C 24.1 97.8 22.200781 104.30039 21.800781 110.90039 L 21 123.80078 C 20.9 124.90078 21.5 125.99961 22.5 126.59961 C 23 126.89961 23.5 127 24 127 C 24.6 127 25.199219 126.8 25.699219 126.5 L 36.5 119.40039 C 42 115.70039 46.7 110.8 50 105 L 80.300781 52.599609 C 81.100781 51.199609 80.599219 49.3 79.199219 48.5 C 77.799219 47.7 75.899609 48.199609 75.099609 49.599609 L 44.800781 102 C 41.900781 106.9 37.899609 111.20039 33.099609 114.40039 L 27.300781 118.19922 L 27.699219 111.30078 C 27.999219 105.60078 29.699609 100 32.599609 95 L 62.900391 42.599609 C 63.700391 41.199609 63.200781 39.3 61.800781 38.5 C 61.275781 38.2 60.678906 38.082422 60.097656 38.126953 z M 49 121 C 47.3 121 46 122.3 46 124 C 46 125.7 47.3 127 49 127 L 89 127 C 90.7 127 92 125.7 92 124 C 92 122.3 90.7 121 89 121 L 49 121 z M 104 121 A 3 3 0 0 0 101 124 A 3 3 0 0 0 104 127 A 3 3 0 0 0 107 124 A 3 3 0 0 0 104 121 z">
+                  </path>
+                </svg>
+              </button>
+              <span class="text-3xl font-bold"> - </span>
+              <button type="button"
+                (click)="empleado.idEmpleado !== undefined && eliminarEmpleado(empleado.idEmpleado)">
+                <svg xmlns="http://www.w3.org/2000/svg" x="0px" y="0px" width="30" height="30" viewBox="0 0 26 26">
+                  <path
+                    d="M 11.5 -0.03125 C 9.542969 -0.03125 7.96875 1.59375 7.96875 3.5625 L 7.96875 4 L 4 4 C 3.449219 4 3 4.449219 3 5 L 3 6 L 2 6 L 2 8 L 4 8 L 4 23 C 4 24.644531 5.355469 26 7 26 L 19 26 C 20.644531 26 22 24.644531 22 23 L 22 8 L 24 8 L 24 6 L 23 6 L 23 5 C 23 4.449219 22.550781 4 22 4 L 18.03125 4 L 18.03125 3.5625 C 18.03125 1.59375 16.457031 -0.03125 14.5 -0.03125 Z M 11.5 2.03125 L 14.5 2.03125 C 15.304688 2.03125 15.96875 2.6875 15.96875 3.5625 L 15.96875 4 L 10.03125 4 L 10.03125 3.5625 C 10.03125 2.6875 10.695313 2.03125 11.5 2.03125 Z M 6 8 L 11.125 8 C 11.25 8.011719 11.371094 8.03125 11.5 8.03125 L 14.5 8.03125 C 14.628906 8.03125 14.75 8.011719 14.875 8 L 20 8 L 20 23 C 20 23.5625 19.5625 24 19 24 L 7 24 C 6.4375 24 6 23.5625 6 23 Z M 8 10 L 8 22 L 10 22 L 10 10 Z M 12 10 L 12 22 L 14 22 L 14 10 Z M 16 10 L 16 22 L 18 22 L 18 10 Z">
+                  </path>
+                </svg>
+              </button>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+  <app-notificacion></app-notificacion>
+</section>

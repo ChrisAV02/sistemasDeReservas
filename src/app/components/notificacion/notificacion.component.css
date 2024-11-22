@@ -1,0 +1,30 @@
+.fixed {
+  position: fixed;
+}
+.top-0 {
+  top: 0;
+}
+.right-0 {
+  right: 0;
+}
+.m-4 {
+  margin: 1rem;
+}
+.p-4 {
+  padding: 1rem;
+}
+.bg-red-500 {
+  background-color: #f56565;
+}
+.text-white {
+  color: #fff;
+}
+.rounded {
+  border-radius: 0.25rem;
+}
+.shadow-lg {
+  box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+}
+.z-50 {
+  z-index: 50;
+}
